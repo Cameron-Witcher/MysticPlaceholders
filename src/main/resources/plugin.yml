@@ -1,0 +1,11 @@
+name: MysticPlaceholders
+author: QuickScythe
+version: ALPHA
+description: Custom Placeholders brought to you by the creator of MysticCloud.net
+api-version: 1.16
+api: Spigot
+main: net.mysticcloud.spigot.core.MysticPlaceholders
+softdepend:
+- Vault
+- PlaceholderAPI
+- MVdWPlaceholderAPI
