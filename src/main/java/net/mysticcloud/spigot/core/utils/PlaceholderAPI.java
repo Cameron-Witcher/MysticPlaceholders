@@ -34,6 +34,7 @@ public class PlaceholderAPI {
 			// $fade:FFFF00:FF6666:This is the message-fade$
 			String info = "";
 //				try {
+			Utils.log("Looking for " + "$" + e.getKey() + ":");
 			info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
 			Utils.log("First one worked. Info: " + info);
 //				} catch (ArrayIndexOutOfBoundsException ex) {
