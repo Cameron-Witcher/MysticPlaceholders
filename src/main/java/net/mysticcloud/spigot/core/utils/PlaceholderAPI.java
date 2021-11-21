@@ -35,12 +35,16 @@ public class PlaceholderAPI {
 				String info = "";
 				try {
 					info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
+					Utils.log("First one worked. Info: " + info);
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					info = tmp.replaceFirst("$" + e.getKey() + ":", "");
+					Utils.log("Replacing first part. Info: " + info);
 					try {
 						info = info.split("-" + e.getKey() + "$")[0];
+						Utils.log("Second one worked. Info: " + info);
 					} catch (ArrayIndexOutOfBoundsException ex2) {
 						info = info.replaceFirst("-" + e.getKey() + "$", "");
+						Utils.log("Third one's a charm ig. Info: " + info);
 					}
 				}
 				Utils.log(info);
