@@ -9,3 +9,10 @@ softdepend:
 - Vault
 - PlaceholderAPI
 - MVdWPlaceholderAPI
+commands:
+   mysticplaceholders:
+      aliases:
+      - mp
+      - mpl
+      - mplace
+      - mph
