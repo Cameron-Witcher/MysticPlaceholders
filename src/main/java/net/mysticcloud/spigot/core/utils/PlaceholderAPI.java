@@ -35,7 +35,8 @@ public class PlaceholderAPI {
 			String info = "";
 //				try {
 			Utils.log("Looking for " + "$" + e.getKey() + ": inside of: " + tmp);
-			info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
+			info = tmp.split("$" + e.getKey() + ":")[1]
+					.split("-" + e.getKey() + "$")[0];
 			Utils.log("First one worked. Info: " + info);
 //				} catch (ArrayIndexOutOfBoundsException ex) {
 //					info = tmp.replace("$" + e.getKey() + ":", "");
