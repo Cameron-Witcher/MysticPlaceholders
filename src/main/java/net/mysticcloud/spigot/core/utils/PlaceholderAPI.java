@@ -40,8 +40,10 @@ public class PlaceholderAPI {
 					info = tmp.replace("$" + e.getKey() + ":", "");
 					Utils.log("Replacing first part. Info: " + info);
 					try {
+						String extra = info.split("-" + e.getKey() + "$")[1];
 						info = info.split("-" + e.getKey() + "$")[0];
 						Utils.log("Second one worked. Info: " + info);
+						Utils.log("Took out extra: " + extra);
 					} catch (ArrayIndexOutOfBoundsException ex2) {
 						info = info.replace("-" + e.getKey() + "$", "");
 						Utils.log("Third one's a charm ig. Info: " + info);
