@@ -1,9 +1,9 @@
-package net.mysticcloud.spigot.core.utils;
+package net.mysticcloud.spigot.core.utils.placeholders;
 
 import org.bukkit.entity.Player;
 
 //@FunctionalInterface
-public interface Worker {
+public interface PlaceholderWorker {
 	
 	public abstract String run(Player player);
 

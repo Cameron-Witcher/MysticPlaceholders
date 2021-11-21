@@ -12,9 +12,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.md_5.bungee.api.ChatColor;
 import net.mysticcloud.spigot.core.utils.Perm;
-import net.mysticcloud.spigot.core.utils.PlaceholderUtils;
+import net.mysticcloud.spigot.core.utils.Utils;
 
 public class AdminCommands implements CommandExecutor {
 
@@ -32,9 +31,9 @@ public class AdminCommands implements CommandExecutor {
 					return true;
 				}
 				if (args[0].equalsIgnoreCase("update")) {
-					if (update()) {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-								"&9&lMP&f >&7 Successfully downloaded MysticPlaceholders.jar. Please restart the server as soon as possible to avoid any fatal bugs"));
+					if (Utils.update()) {
+						sender.sendMessage(Utils.PREFIX + Utils.colorize(
+								"Successfully downloaded MysticPlaceholders.jar. Please restart the server as soon as possible to avoid any fatal bugs"));
 					}
 				}
 			}
@@ -42,59 +41,5 @@ public class AdminCommands implements CommandExecutor {
 		return true;
 	}
 
-	public static boolean update() {
-
-		boolean success = true;
-		InputStream in = null;
-		FileOutputStream out = null;
-
-		try {
-
-			URL myUrl = new URL(
-					"https://jenkins.mysticcloud.net/job/LushCore/lastSuccessfulBuild/artifact/target/LushCore.jar");
-			HttpURLConnection conn = (HttpURLConnection) myUrl.openConnection();
-			conn.setDoOutput(true);
-			conn.setReadTimeout(30000);
-			conn.setConnectTimeout(30000);
-			conn.setUseCaches(false);
-			conn.setAllowUserInteraction(false);
-			conn.setRequestProperty("Content-Type", "application/json");
-			conn.setRequestProperty("Accept-Charset", "UTF-8");
-			conn.setRequestMethod("GET");
-			in = conn.getInputStream();
-			out = new FileOutputStream("plugins/LushCore.jar");
-			int c;
-			byte[] b = new byte[1024];
-			while ((c = in.read(b)) != -1)
-				out.write(b, 0, c);
-
-		}
-
-		catch (Exception ex) {
-			PlaceholderUtils.getPlugin().getLogger().log(Level.SEVERE,
-					"There was an error updating. Check console for details.");
-			ex.printStackTrace();
-			success = false;
-		}
-
-		finally {
-			if (in != null)
-				try {
-					in.close();
-				} catch (IOException e) {
-					PlaceholderUtils.getPlugin().getLogger().log(Level.SEVERE,
-							"There was an error updating. Check console for details.");
-					e.printStackTrace();
-				}
-			if (out != null)
-				try {
-					out.close();
-				} catch (IOException e) {
-					PlaceholderUtils.getPlugin().getLogger().log(Level.SEVERE,
-							"There was an error updating. Check console for details.");
-					e.printStackTrace();
-				}
-		}
-		return success;
-	}
+	
 }
