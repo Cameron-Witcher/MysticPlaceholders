@@ -29,30 +29,30 @@ public class PlaceholderAPI {
 	public static String runFunctions(Player player, String string) {
 		String hold = string;
 		for (Entry<String, FunctionWorker> e : FunctionUtils.getFunctions().entrySet()) {
-			while (hold.contains("$" + e.getKey() + ":")) {
-				String tmp = hold;
-				// $fade:FFFF00:FF6666:This is the message-fade$
-				String info = "";
-				try {
-					info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
-					Utils.log("First one worked. Info: " + info);
-				} catch (ArrayIndexOutOfBoundsException ex) {
-					info = tmp.replace("$" + e.getKey() + ":", "");
-					Utils.log("Replacing first part. Info: " + info);
-					try {
-						String extra = info.split("-" + e.getKey() + "$")[1];
-						info = info.split("-" + e.getKey() + "$")[0];
-						Utils.log("Second one worked. Info: " + info);
-						Utils.log("Took out extra: " + extra);
-					} catch (ArrayIndexOutOfBoundsException ex2) {
-						info = info.replace("-" + e.getKey() + "$", "");
-						Utils.log("Third one's a charm ig. Info: " + info);
-					}
-				}
-				Utils.log(info);
-				String rpl = e.getValue().run(player, info.split(":"));
-				hold = hold.replace("$" + e.getKey() + ":" + info + "-" + e.getKey() + "$", rpl);
-			}
+//			while (hold.contains("$" + e.getKey() + ":")) {
+			String tmp = hold;
+			// $fade:FFFF00:FF6666:This is the message-fade$
+			String info = "";
+//				try {
+			info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
+			Utils.log("First one worked. Info: " + info);
+//				} catch (ArrayIndexOutOfBoundsException ex) {
+//					info = tmp.replace("$" + e.getKey() + ":", "");
+//					Utils.log("Replacing first part. Info: " + info);
+//					try {
+//						String extra = info.split("-" + e.getKey() + "$")[1];
+//						info = info.split("-" + e.getKey() + "$")[0];
+//						Utils.log("Second one worked. Info: " + info);
+//						Utils.log("Took out extra: " + extra);
+//					} catch (ArrayIndexOutOfBoundsException ex2) {
+//						info = info.replace("-" + e.getKey() + "$", "");
+//						Utils.log("Third one's a charm ig. Info: " + info);
+//					}
+//				}
+//				Utils.log(info);
+			String rpl = e.getValue().run(player, info.split(":"));
+			hold = hold.replace("$" + e.getKey() + ":" + info + "-" + e.getKey() + "$", rpl);
+//			}
 		}
 		return hold;
 	}
