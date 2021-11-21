@@ -51,7 +51,7 @@ public class PlaceholderAPI {
 				}
 				Utils.log(info);
 				String rpl = e.getValue().run(player, info.split(":"));
-				hold = hold.replaceAll("$" + e.getKey() + ":" + info + "-" + e.getKey() + "$", rpl);
+				hold = hold.replace("$" + e.getKey() + ":" + info + "-" + e.getKey() + "$", rpl);
 			}
 		}
 		return hold;
