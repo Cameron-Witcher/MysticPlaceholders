@@ -49,7 +49,7 @@ public class Utils {
 			return sb.toString();
 		});
 
-		log(PlaceholderAPI.runFunctions(null, "$fade:FFFF00:FF6666:This is the message-fade$"));
+		log(PlaceholderAPI.runFunctions(null, "This is before. $fade:FFFF00:FF6666:This is the message.-fade$ And this is after"));
 
 	}
 
