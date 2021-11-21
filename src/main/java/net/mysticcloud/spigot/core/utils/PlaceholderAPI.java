@@ -29,9 +29,20 @@ public class PlaceholderAPI {
 	public static String runFunctions(Player player, String string) {
 		String hold = string;
 		for (Entry<String, FunctionWorker> e : FunctionUtils.getFunctions().entrySet()) {
-			while (string.contains("$" + e.getKey() + ":")) {
+			while (hold.contains("$" + e.getKey() + ":")) {
 				String tmp = hold;
-				String info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
+				// $fade:FFFF00:FF6666:This is the message-fade$
+				String info = "";
+				try {
+					info = tmp.split("$" + e.getKey() + ":")[1].split("-" + e.getKey() + "$")[0];
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					info = tmp.replaceFirst("$" + e.getKey() + ":", "");
+					try {
+						info = info.split("-" + e.getKey() + "$")[0];
+					} catch (ArrayIndexOutOfBoundsException ex2) {
+						info = info.replaceFirst("-" + e.getKey() + "$", "");
+					}
+				}
 				String rpl = e.getValue().run(player, info.split(":"));
 				hold = hold.replaceAll("$" + e.getKey() + ":" + info + "-" + e.getKey() + "$", rpl);
 			}
