@@ -56,7 +56,7 @@ public class Utils {
 			return a.toUpperCase();
 		});
 
-		log(PlaceholderAPI.runFunctions(null, "%upper:test-upper%"));
+		log(PlaceholderAPI.runFunctions(null, "%upper:test:test:test-upper%"));
 
 	}
 
