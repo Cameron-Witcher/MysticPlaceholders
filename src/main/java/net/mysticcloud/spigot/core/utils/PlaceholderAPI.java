@@ -29,33 +29,33 @@ public class PlaceholderAPI {
 	public static String runFunctions(Player player, String string) {
 		String hold = string;
 		for (Entry<String, FunctionWorker> e : FunctionUtils.getFunctions().entrySet()) {
-//			while (hold.contains("$" + e.getKey() + ":")) {
+//			while (hold.contains("%" + e.getKey() + ":")) {
 //			String key = e.getKey();
 			String key = "fade";
 			String tmp = hold;
-			// $fade:FFFF00:FF6666:This is the message-fade$
+			// %fade:FFFF00:FF6666:This is the message-fade%
 			String info = "";
 //				try {
-			Utils.log("Looking for " + "$" + e.getKey() + ": inside of: " + tmp);
-			Utils.log(tmp.split("$" + e.getKey() + ":").length + "");
-			info = tmp.split("$" + key + ":")[1].split("-" + key + "$")[0];
+			Utils.log("Looking for " + "%" + e.getKey() + ": inside of: " + tmp);
+			Utils.log(tmp.split("%" + e.getKey() + ":").length + "");
+			info = tmp.split("%" + key + ":")[1].split("-" + key + "%")[0];
 			Utils.log("First one worked. Info: " + info);
 //				} catch (ArrayIndexOutOfBoundsException ex) {
-//					info = tmp.replace("$" + key + ":", "");
+//					info = tmp.replace("%" + key + ":", "");
 //					Utils.log("Replacing first part. Info: " + info);
 //					try {
-//						String extra = info.split("-" + key + "$")[1];
-//						info = info.split("-" + key + "$")[0];
+//						String extra = info.split("-" + key + "%")[1];
+//						info = info.split("-" + key + "%")[0];
 //						Utils.log("Second one worked. Info: " + info);
 //						Utils.log("Took out extra: " + extra);
 //					} catch (ArrayIndexOutOfBoundsException ex2) {
-//						info = info.replace("-" + key + "$", "");
+//						info = info.replace("-" + key + "%", "");
 //						Utils.log("Third one's a charm ig. Info: " + info);
 //					}
 //				}
 //				Utils.log(info);
 			String rpl = e.getValue().run(player, info.split(":"));
-			hold = hold.replace("$" + key + ":" + info + "-" + key + "$", rpl);
+			hold = hold.replace("%" + key + ":" + info + "-" + key + "%", rpl);
 //			}
 		}
 		return hold;
