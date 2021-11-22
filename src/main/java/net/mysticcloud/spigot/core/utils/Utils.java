@@ -49,7 +49,14 @@ public class Utils {
 			return sb.toString();
 		});
 
-		log(PlaceholderAPI.runFunctions(null,"%fade:FFFF00:FF6666:This is the message.-fade%"));
+		FunctionUtils.registerFunction("upper", (pl, args) -> {
+			String a = "";
+			for (String s : args)
+				a = a == "" ? s : a + ":" + s;
+			return a;
+		});
+
+		log(PlaceholderAPI.runFunctions(null, "%fade:FFFF00:FF6666:%upper:This is the message.-upper%-fade%"));
 
 	}
 
