@@ -53,7 +53,7 @@ public class Utils {
 			String a = "";
 			for (String s : args)
 				a = a == "" ? s : a + ":" + s;
-			return a;
+			return a.toUpperCase();
 		});
 
 		log(PlaceholderAPI.runFunctions(null, "%upper:%fade:FFFF00:FF6666:This is the message.-fade%-upper%"));
